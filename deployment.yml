@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sapp-deployment
+  labels:
+    app: sapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sapp
+  template:
+    metadata:
+      labels:
+        app: sapp 
+    spec:
+      containers:
+      - name: nodeserver
+        image: jgonzal10/sapp:latest
+        ports:
+        - containerPort: 3000
